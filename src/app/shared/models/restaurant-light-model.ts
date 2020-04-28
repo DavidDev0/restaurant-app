@@ -1,6 +1,6 @@
-export class RestaurantLight {
+export class LightRestaurant {
     id: number
     name: string
-    imagen: string
+    image: string
     address: string
 }

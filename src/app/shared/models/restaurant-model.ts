@@ -1,6 +1,6 @@
-import { RestaurantLight } from 'src/app/shared/models/restaurant-light-model'
+import { LightRestaurant } from 'src/app/shared/models/restaurant-light-model'
 
-export class Restaurant extends RestaurantLight {
+export class Restaurant extends LightRestaurant {
     description: string
     turn: any[]
 }
