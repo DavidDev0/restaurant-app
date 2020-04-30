@@ -12,8 +12,8 @@ export class ExploreComponent implements OnInit {
   constructor(private service: AppService) { }
 
   ngOnInit(): void {
-    this.service.getAllRestaurantsMock().subscribe((result: any) => {
-      this.restaurants = result;
+    this.service.getAllRestaurants().subscribe((result: any) => {
+      this.restaurants = result.data;
     })
   }
 

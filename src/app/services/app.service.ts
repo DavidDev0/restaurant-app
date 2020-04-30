@@ -1,13 +1,33 @@
 import { Injectable } from '@angular/core';
 import { LightRestaurant } from 'src/app/shared/models/restaurant-light-model';
 import { of } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Booking } from 'src/app/shared/models/booking-models';
 
+const API = 'https://booking-restaurant.herokuapp.com/burger/v1/'
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  getAllRestaurants() {
+    return this.http.get( API + 'restaurants')
+  }
+  createReservation(booking: Booking) {
+    return this.http.post(API + 'reservation', booking)
+  }
+  cancelReservation(reservationCode: string) {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }
+    return this.http.delete(API + 'deleteReservation?locator='+ reservationCode, options)
+  }
 
   getAllRestaurantsMock() {
     const restaurants: LightRestaurant[] = []

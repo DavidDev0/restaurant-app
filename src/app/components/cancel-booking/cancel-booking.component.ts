@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from 'src/app/services/app.service';
 
 @Component({
   selector: 'app-cancel-booking',
@@ -7,11 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CancelBookingComponent implements OnInit {
   codeReservation: string = 'HOLA SOY UNA PRUEBA';
-  constructor() { }
+  constructor(
+    private service: AppService
+  ) { }
 
   ngOnInit(): void {
   }
   sendCancel() {
+    this.service.cancelReservation(this.codeReservation).subscribe((result: any) => {
+      console.log(result)
+    })
     console.log(this.codeReservation)
   }
 

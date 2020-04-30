@@ -19,7 +19,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
-
+import { HttpClientModule} from '@angular/common/http';
 
 const appRoutes: Routes = [
   {path: '', component: ExploreComponent},
@@ -40,6 +40,7 @@ const appRoutes: Routes = [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(
       appRoutes
