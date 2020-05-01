@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Booking } from 'src/app/shared/models/booking-models';
 import { AppService } from 'src/app/services/app.service';
+import { ActivatedRoute } from '@angular/router';
+import { Restaurant } from 'src/app/shared/models/restaurant-model';
 
 @Component({
   selector: 'app-booking',
@@ -10,15 +12,25 @@ import { AppService } from 'src/app/services/app.service';
 })
 export class BookingComponent implements OnInit {
   public bookingForm
+  public restaurant: Restaurant
   public booking = new Booking()
   private idRestaurant: number
   constructor(
     private fb: FormBuilder,
-    private service: AppService
+    private service: AppService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.idRestaurant = Number(this.route.snapshot.paramMap.get('id'))
+    this.getRestaurant()
     this.initForm()
+
+  }
+  getRestaurant() {
+    this.service.getRestaurant(this.idRestaurant).subscribe((result:any)=> {
+      this.restaurant = result.data
+    })
   }
 
   initForm() {

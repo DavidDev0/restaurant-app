@@ -17,6 +17,9 @@ export class AppService {
   getAllRestaurants() {
     return this.http.get( API + 'restaurants')
   }
+  getRestaurant(id: number) {
+    return this.http.get(API + 'restaurant'+ '/'+ id)
+  }
   createReservation(booking: Booking) {
     return this.http.post(API + 'reservation', booking)
   }

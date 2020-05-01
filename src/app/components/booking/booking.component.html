@@ -1,10 +1,10 @@
-<div [ngStyle]="{'background-image': 'url(https://cdn.pixabay.com/photo/2015/03/26/10/07/restaurant-690975_960_720.jpg)'}" class="restaurantImage"></div>
+<div [ngStyle]="{'background-image': 'url(' + restaurant.image+ ')'}" class="restaurantImage"></div>
 <div class ="container">
     <div class="row">
         <div class="col-sm-12 col-md-6">
-            <h1> Restaurante de Juan</h1>
-            <p>Gran Via 145</p>
-            <p>Mejor restaurante de la zona con terrazas</p>
+            <h1> {{restaurant.name}}</h1>
+            <p>{{restaurant.address}}</p>
+            <p>{{restaurant.description}}</p>
         </div>
         <div class="col-sm-12 col-md-6">
             <form class="booking-form" [formGroup]="bookingForm" (ngSubmit)="sendBooking()">
@@ -16,11 +16,10 @@
                       </mat-form-field>
                       <mat-form-field>
                         <mat-label>Turno</mat-label>
-                        <mat-select>
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
+                        <mat-select formControlName="time">
+                            <mat-option *ngFor= "let restaurantTime of restaurant.turn" [value]="restaurantTime.id">
+                                {{restaurantTime.description}}
+                            </mat-option>
                         </mat-select>
                       </mat-form-field>
                       <mat-form-field>

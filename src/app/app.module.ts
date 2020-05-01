@@ -23,7 +23,7 @@ import { HttpClientModule} from '@angular/common/http';
 
 const appRoutes: Routes = [
   {path: '', component: ExploreComponent},
-  {path: 'booking', component: BookingComponent},
+  {path: 'booking/:id', component: BookingComponent},
   {path: 'cancel', component: CancelBookingComponent}
 ]
 @NgModule({
