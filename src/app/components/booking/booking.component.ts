@@ -4,6 +4,8 @@ import { Booking } from 'src/app/shared/models/booking-models';
 import { AppService } from 'src/app/services/app.service';
 import { ActivatedRoute } from '@angular/router';
 import { Restaurant } from 'src/app/shared/models/restaurant-model';
+import { MatDialog } from '@angular/material/dialog';
+import { InfoDialogComponent } from 'src/app/shared/dialogs/info-dialog/info-dialog.component';
 
 @Component({
   selector: 'app-booking',
@@ -16,6 +18,7 @@ export class BookingComponent implements OnInit {
   public booking = new Booking()
   private idRestaurant: number
   constructor(
+    public dialog: MatDialog,
     private fb: FormBuilder,
     private service: AppService,
     private route: ActivatedRoute
@@ -50,8 +53,21 @@ export class BookingComponent implements OnInit {
     this.setBooking()
     this.service.createReservation(this.booking).subscribe((result: any)=> {
       console.log(result.data)
+      const title = "CÓDIGO DE RESERVA: " + result.data
+      const info = "Necesitarás el código para poder acceder al restaurante o cancelar la reserva. Por favor guardalo en un lugar seguro"
+      this.openDialog( title,info)
     })
-    console.log('Sending booking', this.bookingForm.get('date').value);
+  }
+
+  openDialog(title: string, info: string): void {
+    const dialogRef = this.dialog.open(InfoDialogComponent, {
+      width: '350px',
+      data: {title: title, info: info}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 }
