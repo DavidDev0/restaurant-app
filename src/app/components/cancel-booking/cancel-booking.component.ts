@@ -7,7 +7,8 @@ import { AppService } from 'src/app/services/app.service';
   styleUrls: ['./cancel-booking.component.scss']
 })
 export class CancelBookingComponent implements OnInit {
-  codeReservation: string = 'HOLA SOY UNA PRUEBA';
+  state = "Tu reserva aún no ha sido cancelada"
+  codeReservation: string;
   constructor(
     private service: AppService
   ) { }
@@ -16,6 +17,7 @@ export class CancelBookingComponent implements OnInit {
   }
   sendCancel() {
     this.service.cancelReservation(this.codeReservation).subscribe((result: any) => {
+      this.state = 'Tu reserva se ha cancelado con ÉXITO'
       console.log(result)
     })
     console.log(this.codeReservation)
