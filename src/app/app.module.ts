@@ -22,6 +22,7 @@ import {MatInputModule} from '@angular/material/input';
 import { HttpClientModule} from '@angular/common/http';
 import { InfoDialogComponent } from './shared/dialogs/info-dialog/info-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatStepperModule} from '@angular/material/stepper';
 
 const appRoutes: Routes = [
   {path: '', component: ExploreComponent},
@@ -56,7 +57,8 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

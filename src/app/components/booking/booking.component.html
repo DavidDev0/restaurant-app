@@ -1,16 +1,35 @@
-<div [ngStyle]="{'background-image': 'url(' + restaurant.image+ ')'}" class="restaurantImage"></div>
+<div [ngStyle]="{'background-image': 'url(' + restaurant.image+ ')'}" class="restaurantBackground">
 <div class ="container">
-    <div class="row">
-        <div class="col-sm-12 col-md-6">
-            <h1> {{restaurant.name}}</h1>
-            <p>{{restaurant.address}}</p>
-            <p>{{restaurant.description}}</p>
+
+    <div class="row" >
+        <div class="col-sm-12 col-md-6 pTop50">
+            <mat-card>
+                <div [ngStyle]="{'background-image': 'url(' + restaurant.image+ ')'}" class="restaurantImage">
+    </div>
+                <h1> {{restaurant.name}}</h1>
+                <p>{{restaurant.address}}</p>
+                <p>{{restaurant.description}}</p>
+
+            </mat-card>
         </div>
-        <div class="col-sm-12 col-md-6">
+        <div class="col-sm-12 col-md-6 pTop50">
+            <mat-card class="p40">
+                <mat-horizontal-stepper>
+                    <mat-step label="Reservar">
+
             <form class="booking-form" [formGroup]="bookingForm" (ngSubmit)="sendBooking()">
+                
                 <h1>Realiza tu reserva</h1>
                 <div>
-                    <mat-form-field appearance="fill">
+                    <mat-form-field >
+                        <mat-label>Nombre</mat-label>
+                        <input type="text" formControlName="name" matInput>
+                      </mat-form-field>
+                      <mat-form-field >
+                        <mat-label>Email</mat-label>
+                        <input type="email" formControlName="email" matInput>
+                      </mat-form-field>
+                    <mat-form-field>
                         <mat-label>Personas</mat-label>
                         <input type="number" formControlName="customers" matInput>
                       </mat-form-field>
@@ -27,12 +46,25 @@
                         <input matInput [matDatepicker]="date" formControlName="date">
                         <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
                         <mat-datepicker #date></mat-datepicker>
-                      </mat-form-field>
+                      </mat-form-field> 
                 </div>
                 <div class="text-right">
                     <button type="submit" mat-button color="primary" [disabled]="!bookingForm.valid">Enviar Reserva</button>
                 </div>
             </form>
+        </mat-step>
+        <mat-step label="Pagar">
+            Content 2
+        </mat-step>
+        <mat-step label="Resumen">
+            Content 2
+          </mat-step>
+        </mat-horizontal-stepper>
+
+        </mat-card>
+
         </div>
     </div>
+
+</div>
 </div>
