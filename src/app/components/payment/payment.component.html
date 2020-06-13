@@ -1,0 +1,12 @@
+<mat-card class="p40" *ngIf="info?.code">
+    <mat-horizontal-stepper>
+        <mat-step label="Pagar">
+            Content 2
+            {{info.code}}
+        </mat-step>
+        <mat-step label="Resumen">
+            Content 2
+            {{info.booking.name}}
+        </mat-step>
+    </mat-horizontal-stepper>
+</mat-card>

@@ -24,11 +24,14 @@ import { InfoDialogComponent } from './shared/dialogs/info-dialog/info-dialog.co
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatStepperModule} from '@angular/material/stepper';
 import { BookingFormComponent } from './components/booking/booking-form/booking-form.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 const appRoutes: Routes = [
   {path: '', component: ExploreComponent},
   {path: 'booking/:id', component: BookingComponent},
-  {path: 'cancel', component: CancelBookingComponent}
+  {path: 'cancel', component: CancelBookingComponent},
+  {path: 'payment', component: PaymentComponent}
+
 ]
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ const appRoutes: Routes = [
     CancelBookingComponent,
     HeaderComponent,
     InfoDialogComponent,
-    BookingFormComponent
+    BookingFormComponent,
+    PaymentComponent
   ],
   imports: [
     ReactiveFormsModule,

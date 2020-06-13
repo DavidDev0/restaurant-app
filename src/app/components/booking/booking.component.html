@@ -13,19 +13,10 @@
                 </mat-card>
             </div>
             <div class="col-sm-12 col-md-6 pTop50">
-                <mat-card class="p40">
-                    <mat-horizontal-stepper>
-                        <mat-step label="Reservar">
-                            <app-booking-form [restaurant]="restaurant"></app-booking-form>
-                        </mat-step>
-                        <mat-step label="Pagar">
-                            Content 2
-                        </mat-step>
-                        <mat-step label="Resumen">
-                            Content 2
-                        </mat-step>
-                    </mat-horizontal-stepper>
+                <mat-card>
+                    <app-booking-form [restaurant]="restaurant"></app-booking-form>
                 </mat-card>
+
             </div>
         </div>
     </div>
