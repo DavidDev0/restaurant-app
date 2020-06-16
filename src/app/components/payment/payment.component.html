@@ -3,6 +3,13 @@
         <mat-step label="Pagar">
             Content 2
             {{info.code}}
+            <form novalidate (ngSubmit)="buy()" [formGroup]="stripeTest">
+                <input type="text" formControlName="name" placeholder="Jane Doe">
+                <ngx-stripe-card [options]="cardOptions" [elementsOptions]="elementsOptions"></ngx-stripe-card>
+                <button type="submit">
+                  BUY
+                </button>
+              </form>
         </mat-step>
         <mat-step label="Resumen">
             Content 2
