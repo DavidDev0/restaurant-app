@@ -50,6 +50,7 @@ export class BookingFormComponent implements OnInit {
     this.booking.person = this.bookingForm.get('customers').value
     this.booking.email = this.bookingForm.get('email').value
     this.booking.name = this.bookingForm.get('name').value
+    this.booking.price = this.restaurant.price
   }
   // Reserva
  sendBooking() {
@@ -65,7 +66,7 @@ export class BookingFormComponent implements OnInit {
   payBooking() {
     this.setBooking()
     this.service.createReservation(this.booking).subscribe((result: any)=> {
-    this.paymentService.setBooked( {code: result.data, booking: this.booking})
+    this.paymentService.setBooked( { ...this.booking, locator: result.data})
     this.router.navigate(['/payment']);
   })
   }

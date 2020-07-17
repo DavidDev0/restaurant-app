@@ -5,4 +5,5 @@ export class Booking {
     person: number
     email: string
     name: string
+    price: number
 }
